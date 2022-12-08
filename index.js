@@ -24,6 +24,13 @@ async function run(){
             const services = await cursor.toArray();
             res.send(services);
         })
+
+        // post a new service
+        app.post('/service', async(req, res) => {
+            const newService = req.body;
+            const result = await volunteerCollection.insertOne(newService);
+            res.send(result);
+        })
     }
     finally{
 
